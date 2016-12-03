@@ -1,0 +1,22 @@
+//Build a Graph computing a Deep Neural Network using TensorFlow 
+// Ref:
+//www.tensorflow.org/tutorials/image_recognition/index.html 
+//www.tensorflow.org/versions/master/how_tos/image_retraining/index.html 
+
+import tensorflow as tf
+from tensorflow.examples.tutorials.mnist import input_data
+
+mnist = input_data.read_data_sets(‘MNIST_data’, one_hot=True)
+x = tf.placeholder(“float”, shape=[None,784])
+w = tf.Variable(tf.zeros([784,10]))
+b = tf.Variable(tf.zeros([10]))
+y = tf.nn.softmax(tf.matmul(x,W)+b)
+/////
+
+y_ = tf.placeholder(tf.float32, [None, 10])
+cross_entropy = -tf.reduce_sum(y_ * tf.log(y))
+opt = tf.train.GradientDescentOptimizer(0.01)
+train_op = opt.minimize(cross_entropy)
+
+//
+
